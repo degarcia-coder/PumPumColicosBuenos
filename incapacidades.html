@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incapacidades</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Incapacidades</h1>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="empleados.html">Empleados</a>
+            <a href="seguimiento.html">Seguimiento</a>
+            <button id="btn-logout">Cerrar Sesión</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="mensaje" style="display:none;"></div>
+
+        <!-- Formulario registrar incapacidad -->
+        <div class="card">
+            <h2>Registrar Incapacidad</h2>
+            <form id="form-incapacidad">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>ID Empleado</label>
+                        <input type="number" id="empleado_id" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha Inicio</label>
+                        <input type="date" id="fecha_inicio" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha Fin</label>
+                        <input type="date" id="fecha_fin" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select id="tipo" required>
+                            <option value="">Seleccionar</option>
+                            <option value="enfermedad_general">Enfermedad General</option>
+                            <option value="accidente_laboral">Accidente Laboral</option>
+                            <option value="licencia_medica">Licencia Médica</option>
+                            <option value="incapacidad_temporal">Incapacidad Temporal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Entidad Médica</label>
+                        <input type="text" id="entidad_medica" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Diagnóstico General</label>
+                        <input type="text" id="diagnostico_general" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Observaciones</label>
+                        <textarea id="observaciones"></textarea>
+                    </div>
+                </div>
+                <button type="submit">Registrar Incapacidad</button>
+            </form>
+        </div>
+
+        <!-- Filtros -->
+        <div class="card">
+            <h2>Buscar Incapacidades</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>ID Empleado</label>
+                    <input type="number" id="filtro-empleado">
+                </div>
+                <div class="form-group">
+                    <label>Estado</label>
+                    <select id="filtro-estado">
+                        <option value="">Todos</option>
+                        <option value="registrada">Registrada</option>
+                        <option value="en_revision">En Revisión</option>
+                        <option value="aprobada">Aprobada</option>
+                        <option value="rechazada">Rechazada</option>
+                        <option value="finalizada">Finalizada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tipo</label>
+                    <select id="filtro-tipo">
+                        <option value="">Todos</option>
+                        <option value="enfermedad_general">Enfermedad General</option>
+                        <option value="accidente_laboral">Accidente Laboral</option>
+                        <option value="licencia_medica">Licencia Médica</option>
+                        <option value="incapacidad_temporal">Incapacidad Temporal</option>
+                    </select>
+                </div>
+            </div>
+            <button id="btn-filtrar">Buscar</button>
+        </div>
+
+        <!-- Tabla incapacidades -->
+        <div class="card">
+            <h2>Lista de Incapacidades</h2>
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th>Empleado ID</th>
+                        <th>Tipo</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Días</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-incapacidades"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/config/api.js"></script>
+    <script src="js/utils/auth.js"></script>
+    <script src="js/services/authService.js"></script>
+    <script src="js/services/incapacidadesService.js"></script>
+    <script src="js/pages/incapacidades.js"></script>
+</body>
+</html>
